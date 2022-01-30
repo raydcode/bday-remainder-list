@@ -1,24 +1,21 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import data from './data';
+import List from './List';
 
 function App() {
+  const [user, Setuser] = useState(data);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <section className="container">
+        <h3>
+          {user.length === 0 ? 'No Data Available' : 'Who has Birthday ?'}
+        </h3>
+        <List users={user} />
+        <button onClick={() => Setuser([])}>clear data</button>
+      </section>
+    </main>
   );
 }
 
